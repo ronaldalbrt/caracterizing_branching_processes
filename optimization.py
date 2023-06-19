@@ -19,9 +19,9 @@ def unormalized_expectation(graph_list, alphas, theta_g):
     expected_value = 0
 
     # Add the last parameter to the list of parameters
-    # This is done because there is a restriction on the theta distribution
-    # to belong to the interval [0, 1].
-    # So we assume alphas parameter to belong to the real space
+    # This is done because there is a restriction on theta
+    # to belong to the interval [0, 1], since it's a distribution.
+    # So we assume alphas parameters to belong to the real space
     # and fit then into the [0, 1] interval with a softmax function
     alphas = np.append(alphas,1)
 

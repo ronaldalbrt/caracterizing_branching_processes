@@ -29,3 +29,21 @@ File list
     <li><h3>optimization.py</h3></li>
     <p>Script for the optimization fo the likelihood function in order to estimate the offspring distribution of the desired Branching Proccess.</p>
 </ul>
+
+<h2 align="center">
+Execution
+</h2>
+<p>After installing all the necessary packages, one can run the project by executing the following command</p>
+
+```
+python run.py
+```
+
+<h2 align="center">
+Results
+</h2>
+<p>The results obtained by running the project are available at the results folder. The results are in pickle format and can de loaded into a python Dictionary object by perfoming the command</p>
+```
+with open('results/<result_file_name>.pkl', 'rb') as f:
+    results = pickle.load(f)
+```
