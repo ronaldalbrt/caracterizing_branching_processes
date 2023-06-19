@@ -43,6 +43,7 @@ python run.py
 Results
 </h2>
 <p>The results obtained by running the project are available at the results folder. The results are in pickle format and can de loaded into a python Dictionary object by perfoming the command</p>
+
 ```
 with open('results/<result_file_name>.pkl', 'rb') as f:
     results = pickle.load(f)
