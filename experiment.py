@@ -3,7 +3,7 @@
 # Date: June 2023
 from sampling_model import galton_watson, sample
 from graph_mcmc import mcmc_walk
-from expectation_maximization import optimized_distribution
+from optimization import optimized_distribution
 import numpy as np
 
 # -------------------------------------------------------------------------

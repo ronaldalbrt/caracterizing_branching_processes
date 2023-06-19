@@ -22,21 +22,20 @@ def truncated_poisson_pmf(min_value, max_value, mu, k):
 
 # Definition of the experiment.
 experiment_sets =[
-    # ([0.2, 0.5, 0.3], [randint.pmf(i, 1, 4) for i in range(1, 4)], 3, 3, 0.2, 20000),
-    # ([0.2, 0.5, 0.3], [randint.pmf(i, 1, 4) for i in range(1, 4)], 3, 3, 0.5, 20000),
-    # ([0.2, 0.5, 0.3], [randint.pmf(i, 1, 4) for i in range(1, 4)], 3, 3, 0.8, 20000),
-    # ([truncated_poisson_pmf(0, 11, i, lambda_poisson) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.2, 20000),
-    # ([truncated_poisson_pmf(0, 11, i, lambda_poisson) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.5, 20000),
-    #([truncated_poisson_pmf(0, 11, i, lambda_poisson) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.8, 20000),
-    # ([zipfian.pmf(i, a, 10) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.2, 20000),
-    # ([zipfian.pmf(i, a, 10) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.5, 20000),
+    ([0.2, 0.5, 0.3], [randint.pmf(i, 1, 4) for i in range(1, 4)], 3, 3, 0.2, 20000),
+    ([0.2, 0.5, 0.3], [randint.pmf(i, 1, 4) for i in range(1, 4)], 3, 3, 0.5, 20000),
+    ([0.2, 0.5, 0.3], [randint.pmf(i, 1, 4) for i in range(1, 4)], 3, 3, 0.8, 20000),
+    ([truncated_poisson_pmf(0, 11, i, lambda_poisson) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.2, 20000),
+    ([truncated_poisson_pmf(0, 11, i, lambda_poisson) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.5, 20000),
+    ([truncated_poisson_pmf(0, 11, i, lambda_poisson) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.8, 20000),
+    ([zipfian.pmf(i, a, 10) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.2, 20000),
+    ([zipfian.pmf(i, a, 10) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.5, 20000),
     ([zipfian.pmf(i, a, 10) for i in range(1, 11)], [binom.pmf(i, 9, 0.3) for i in range(10)], 10, 3, 0.8, 20000)
 ]
 
 # -------------------------------------------------------------------------
 # Run the experiment
 # -------------------------------------------------------------------------
-
 results = {}
 for i, exp in enumerate(experiment_sets):
     print(i)

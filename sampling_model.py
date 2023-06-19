@@ -34,21 +34,29 @@ def _map_count_operator(maps_matrix):
 def _count_maps_matrix(S, G, S_root=0, G_root=0):
     S_graph = S.copy()
     G_graph = G.copy()
+    # Base cases
     if len(S.nodes()) == 1:
         return np.array([1])
     if len(S.nodes) > len(G.nodes):
         return np.array([0])
     else:
+        # Get the neighbors of the root of S and G
         S_neighbors = [node for node in S_graph.neighbors(S_root)]
         G_neighbors = [node for node in G_graph.neighbors(G_root)]
 
+        # Remove the root from S and G
         S_graph.remove_node(S_root)
         G_graph.remove_node(G_root)
 
+        # Get the connected components of S and G after removing the root
         S_components = [S_graph.subgraph(c) for c in nx.weakly_connected_components(S_graph)]
         G_components = [G_graph.subgraph(c) for c in nx.weakly_connected_components(G_graph)]
         
+        # Initialize the auxiliary matrix
         maps_matrix = np.empty([len(S_neighbors), len(G_neighbors)])
+        
+        # Iterate over the connected components of S and G, and calculate the number of maps between them
+        # Recursively call the function to calculate the number of maps between the connected components
         for i, S_component in enumerate(S_components):
             curr_map_array = np.empty(len(G_neighbors))
             for j, G_component in enumerate(G_components):
@@ -97,12 +105,14 @@ def sample(G, p):
     S = nx.DiGraph()
     nodes = []
     n_nodes = 0
+    # Sample nodes from G
     for node in G.nodes():
         u = random.random()
         if u < p:
             nodes.append(node)
             n_nodes += 1
 
+    # Construct the sampled graph S with the paths from the sampled nodes to the root of G
     for node in nodes:
         paths = [path for path in nx.all_simple_edge_paths(G, 0, node)]
         if len(paths) > 0:
@@ -124,6 +134,7 @@ def galton_watson_probability(G, offspring_distribution):
     degrees = [val for (node, val) in out_degree]
 
     prob = 1
+    # Calculate the probability of each node having k offsprings
     for deegre in set(degrees):
         if offspring_distribution[deegre - 1] != 0:
             prob *= offspring_distribution[deegre - 1]**degrees.count(deegre)
@@ -145,6 +156,7 @@ def galton_watson(offspring_distribution, L):
 
     nodes_at_level = [[0]]
 
+    # Generate the simulated Galton-Watson tree level by level
     for i in range(L - 1):
         nodes_at_level.append([])
         for v in nodes_at_level[i]:
@@ -165,8 +177,10 @@ def galton_watson(offspring_distribution, L):
 # Returns: The graph G with the tree rooted at v removed
 # -------------------------------------------------------------------------
 def remove_tree(v, G):
+    # Base case: v is a leaf
     if G.out_degree(v) == 0:
         G.remove_node(v)
+    # Recursive case: v is not a leaf
     else:
         for u in G.copy().successors(v):
             remove_tree(u, G)
