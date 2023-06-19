@@ -49,6 +49,6 @@ for i, exp in enumerate(experiment_sets):
         'estimated_distribution': result[1]
     }
 
-with open(results_dir+'experiment_results_3.pickle', 'wb') as file:
+with open(results_dir+'experiment_results.pickle', 'wb') as file:
     pickle.dump(results, file, protocol=pickle.HIGHEST_PROTOCOL)
 
