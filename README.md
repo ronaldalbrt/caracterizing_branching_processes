@@ -13,7 +13,6 @@ It's entirely implemented in python and requires several python libraries to be 
 ```
 pip install -r requirements.txt
 ```
-.
 
 <h2 align="center">
 File list
